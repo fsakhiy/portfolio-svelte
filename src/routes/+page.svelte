@@ -54,7 +54,6 @@
       },
     });
 
-    console.log(q.data.data);
     myLinks = q.data.data
   }
 
