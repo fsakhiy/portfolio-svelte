@@ -4,6 +4,7 @@
 
   let myName: string;
   let myIntro: string;
+  let myDescription: string;
 
   async function getName() {
     const q = await axios({
@@ -28,10 +29,22 @@
 
     myIntro = q.data.data.attributes.introduction;
   }
+  export async function getDescription() {
+    const q = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_CMS_API}/description`,
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_CMS_TOKEN}`,
+      },
+    });
+
+    myDescription = q.data.data.attributes.description;
+  }
 
   onMount(() => {
     getName();
     getIntroduction();
+    getDescription();
   });
 </script>
 
@@ -48,7 +61,7 @@
       </h1>
 
       <div>
-        <p class="text-3xl">im a developer from semarang</p>
+        <p class="text-3xl">{myDescription}</p>
       </div>
       <div class="flex flex-col justify-center items-center">
         <p class="font-bold text-xl">Scroll down to see more (coming soon)</p>
