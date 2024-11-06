@@ -2,11 +2,13 @@
   import axios from "axios";
   import { onMount } from "svelte";
   import LoadingDots from "../components/LoadingDots.svelte";
+  import Links from "../components/Links.svelte";
 
   let myName: string;
   let myIntro: string;
   let myDescription: string;
   let loading: boolean = true;
+  let myLinks: any;
 
   async function getName() {
     const q = await axios({
@@ -43,6 +45,19 @@
     myDescription = q.data.data.attributes.description;
   }
 
+  export async function getLinks() {
+    const q = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_CMS_API}/links?populate=icon`,
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_CMS_TOKEN}`,
+      },
+    });
+
+    console.log(q.data.data);
+    myLinks = q.data.data
+  }
+
   //   onMount(() => {
   //     getName();
   //     getIntroduction();
@@ -51,7 +66,7 @@
 
   onMount(async () => {
     loading = true;
-    await Promise.all([getName(), getIntroduction(), getDescription()]);
+    await Promise.all([getName(), getIntroduction(), getDescription(), getLinks()]);
     loading = false; // Set loading to false when data is fetched
   });
 
@@ -90,6 +105,15 @@
         </div>
       </div>
     </div>
+
+    <div class="p-5 flex flex-col items-center gap-5">
+      <p class="font-dm-serif text-3xl">Visit me on:</p>
+      <div class="flex gap-5">
+        {#each myLinks as link}
+          <Links text={link.attributes.name} url={link.attributes.url} />
+        {/each}
+      </div>
+    </div>
   </div>
 {/if}
 
@@ -100,6 +124,4 @@
     font-weight: 400;
     font-style: normal;
   }
-
-  
 </style>
