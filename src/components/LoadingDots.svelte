@@ -26,15 +26,8 @@
 </script>
 
 <div class="flex justify-center items-center min-h-screen">
-  <div class="loading-text text-3xl">{loadingText}</div>
+  <div class="font-dm-serif text-3xl">{loadingText}</div>
 </div>
 
 <style>
-  .loading-text {
-    font-family: "Anek Devanagari", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-  }
 </style>

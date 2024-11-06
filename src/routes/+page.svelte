@@ -101,17 +101,5 @@
     font-style: normal;
   }
 
-  .font-dm-serif {
-    font-family: "DM Serif Text", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  .font-anek-devanagari {
-    font-family: "Anek Devanagari", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-  }
+  
 </style>
