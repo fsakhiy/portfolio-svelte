@@ -107,7 +107,7 @@
 
     <div class="p-5 flex flex-col items-center gap-5">
       <p class="font-dm-serif text-3xl">Visit me on:</p>
-      <div class="flex gap-5">
+      <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-5">
         {#each myLinks as link}
           <Links text={link.attributes.name} url={link.attributes.url} imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${link.attributes.icon.data.attributes.url}`}/>
         {/each}
