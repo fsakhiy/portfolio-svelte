@@ -24,7 +24,7 @@
     myName = q.data.data.attributes.name;
   }
 
-  export async function getIntroduction() {
+  async function getIntroduction() {
     const q = await axios({
       method: "get",
       url: `${import.meta.env.VITE_CMS_API}/introduction`,
@@ -35,7 +35,7 @@
 
     myIntro = q.data.data.attributes.introduction;
   }
-  export async function getDescription() {
+  async function getDescription() {
     const q = await axios({
       method: "get",
       url: `${import.meta.env.VITE_CMS_API}/description`,
@@ -47,7 +47,7 @@
     myDescription = q.data.data.attributes.description;
   }
 
-  export async function getLinks() {
+  async function getLinks() {
     const q = await axios({
       method: "get",
       url: `${import.meta.env.VITE_CMS_API}/links?populate=icon`,
@@ -59,7 +59,7 @@
     myLinks = q.data.data;
   }
 
-  export async function getProjects() {
+  async function getProjects() {
     const q = await axios({
       method: "get",
       url: `${import.meta.env.VITE_CMS_API}/projects?populate[0]=tech_stacks&populate[1]=picture&populate[2]=tech_stacks.picture`,
@@ -80,18 +80,8 @@
       getLinks(),
       getProjects(),
     ]);
-    loading = false; // Set loading to false when data is fetched
+    loading = false;
   });
-
-  // async function getData() {
-  //   // Simultaneously fetch data (similar to your previous functions)
-  //   await Promise.all([getName(), getIntroduction(), getDescription()]);
-  //   loading = false;
-  // }
-
-  // onMount(() => {
-  //   getData();
-  // });
 </script>
 
 {#if loading}
