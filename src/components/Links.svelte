@@ -4,14 +4,18 @@
   export let imgUrl: string;
 </script>
 
-<a href={url} target="_blank">
-  <div class="px-3 py-1 rounded-lg border hover:bg-gray-200 flex gap-1 items-center h-16">
+<a href={url} target="_blank" class="block">
+  <div
+    class="px-3 py-1 rounded-lg border hover:bg-gray-200 flex gap-1 items-center h-16 transition-all duration-300 transform hover:scale-105"
+  >
     <span>
-      <img src={imgUrl} alt={text} />
+      <img
+        src={imgUrl}
+        alt={text}
+        class="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+      />
     </span>
-    <span>
-      {text}
-    </span>
+    <span class="transition-opacity duration-300">{text}</span>
   </div>
 </a>
 
