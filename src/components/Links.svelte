@@ -6,7 +6,7 @@
 
 <a href={url} target="_blank" class="block">
   <div
-    class="px-3 py-1 rounded-lg border hover:bg-gray-200 flex gap-1 items-center h-16 transition-all duration-300 transform hover:scale-105"
+    class="px-3 py-1 rounded-lg border hover:bg-gray-200 flex gap-1 items-center h-16 transition-all duration-300 transform hover:scale-105 shadow-sm"
   >
     <span>
       <img

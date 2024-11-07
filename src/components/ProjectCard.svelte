@@ -11,7 +11,7 @@
 </div> -->
 
 <div
-  class="border rounded-lg flex flex-col w-full h-64 p-5 relative group overflow-hidden"
+  class="border shadow-sm rounded-lg flex flex-col w-full h-64 p-5 relative group overflow-hidden"
 >
   <!-- Background Image with Zoom Effect -->
   <div
