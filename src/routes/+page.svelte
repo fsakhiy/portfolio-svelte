@@ -4,6 +4,7 @@
   import LoadingDots from "../components/LoadingDots.svelte";
   import Links from "../components/Links.svelte";
   import ProjectCard from "../components/ProjectCard.svelte";
+  import Experience from "../components/Experience.svelte";
 
   let myName: string;
   let myIntro: string;
@@ -11,6 +12,7 @@
   let loading: boolean = true;
   let myLinks: any;
   let myProjects: any;
+  let myExperiences: any;
 
   async function getName() {
     const q = await axios({
@@ -71,6 +73,18 @@
     myProjects = q.data.data;
   }
 
+  async function getExperiences() {
+    const q = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_CMS_API}/experiences`,
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_CMS_TOKEN}`,
+      },
+    });
+
+    myExperiences = q.data.data;
+  }
+
   onMount(async () => {
     loading = true;
     await Promise.all([
@@ -79,6 +93,7 @@
       getDescription(),
       getLinks(),
       getProjects(),
+      getExperiences(),
     ]);
     loading = false;
   });
@@ -123,7 +138,7 @@
     </div>
 
     <div class="p-5 flex flex-col gap-5 items-center">
-      <p class="font-dm-serif text-3xl">My Projects</p>
+      <p class="font-dm-serif text-3xl">My projects</p>
       <div
         class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 flex-grow"
       >
@@ -131,6 +146,22 @@
           <ProjectCard
             name={project.attributes.name}
             imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${project.attributes.picture.data[0].attributes.url}`}
+          />
+        {/each}
+      </div>
+    </div>
+
+    <div class="p-5 flex flex-col gap-5 items-center">
+      <p class="font-dm-serif text-3xl">My experiences</p>
+      <div class="flex flex-col gap-3">
+        {#each myExperiences as exp}
+          <Experience
+            place={exp.attributes.title}
+            role={exp.attributes.role}
+            type={exp.attributes.type}
+            start_date={exp.attributes.start_date}
+            end_date={exp.attributes.end_date}
+            location={exp.attributes.location}
           />
         {/each}
       </div>
