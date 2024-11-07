@@ -3,12 +3,14 @@
   import { onMount } from "svelte";
   import LoadingDots from "../components/LoadingDots.svelte";
   import Links from "../components/Links.svelte";
+  import ProjectCard from "../components/ProjectCard.svelte";
 
   let myName: string;
   let myIntro: string;
   let myDescription: string;
   let loading: boolean = true;
   let myLinks: any;
+  let myProjects: any;
 
   async function getName() {
     const q = await axios({
@@ -54,18 +56,30 @@
       },
     });
 
-    myLinks = q.data.data
+    myLinks = q.data.data;
   }
 
-  //   onMount(() => {
-  //     getName();
-  //     getIntroduction();
-  //     getDescription();
-  //   });
+  export async function getProjects() {
+    const q = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_CMS_API}/projects?populate[0]=tech_stacks&populate[1]=picture&populate[2]=tech_stacks.picture`,
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_CMS_TOKEN}`,
+      },
+    });
+
+    myProjects = q.data.data;
+  }
 
   onMount(async () => {
     loading = true;
-    await Promise.all([getName(), getIntroduction(), getDescription(), getLinks()]);
+    await Promise.all([
+      getName(),
+      getIntroduction(),
+      getDescription(),
+      getLinks(),
+      getProjects(),
+    ]);
     loading = false; // Set loading to false when data is fetched
   });
 
@@ -106,10 +120,28 @@
     </div>
 
     <div class="p-5 flex flex-col items-center gap-5">
-      <p class="font-dm-serif text-3xl">Visit me on:</p>
+      <p class="font-dm-serif text-3xl">Visit me on</p>
       <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-5">
         {#each myLinks as link}
-          <Links text={link.attributes.name} url={link.attributes.url} imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${link.attributes.icon.data.attributes.url}`}/>
+          <Links
+            text={link.attributes.name}
+            url={link.attributes.url}
+            imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${link.attributes.icon.data.attributes.url}`}
+          />
+        {/each}
+      </div>
+    </div>
+
+    <div class="p-5 flex flex-col gap-5 items-center">
+      <p class="font-dm-serif text-3xl">My Projects</p>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 flex-grow"
+      >
+        {#each myProjects as project}
+          <ProjectCard
+            name={project.attributes.name}
+            imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${project.attributes.picture.data[0].attributes.url}`}
+          />
         {/each}
       </div>
     </div>
