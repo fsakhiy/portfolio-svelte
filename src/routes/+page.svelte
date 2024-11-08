@@ -76,7 +76,7 @@
   async function getExperiences() {
     const q = await axios({
       method: "get",
-      url: `${import.meta.env.VITE_CMS_API}/experiences`,
+      url: `${import.meta.env.VITE_CMS_API}/experiences?sort[0]=start_date:desc`,
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_CMS_TOKEN}`,
       },
