@@ -5,6 +5,7 @@
   export let start_date: string;
   export let end_date: string;
   export let location: string = "City, Country";
+  export let id: string;
 
   // Format the dates to "Month Year"
   let formattedStartDate = new Date(start_date).toLocaleDateString("en-US", {
