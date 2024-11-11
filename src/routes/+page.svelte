@@ -102,7 +102,7 @@
 {#if loading}
   <LoadingDots text="loading" />
 {:else}
-  <div class="main font-anek-devanagari">
+  <div class="font-anek-devanagari">
     <div
       class="px-5 lg:px-10 py-5 h-full min-h-screen flex flex-col justify-between bg-gradient-to-tr from-zinc-400 via-neutral-300 to-gray-100"
     >
@@ -144,6 +144,7 @@
       >
         {#each myProjects as project}
           <ProjectCard
+            id={project.attributes.slug}
             name={project.attributes.name}
             imgUrl={`${import.meta.env.VITE_CMS_STORAGE}${project.attributes.picture.data[0].attributes.url}`}
           />
@@ -162,6 +163,7 @@
             start_date={exp.attributes.start_date}
             end_date={exp.attributes.end_date}
             location={exp.attributes.location}
+            id={exp.id}
           />
         {/each}
       </div>
