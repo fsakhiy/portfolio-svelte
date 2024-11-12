@@ -1,38 +1,51 @@
-# sv
+# Personal Portfolio Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is my personal portfolio website, showcasing my projects, skills, and experience as a developer.
 
-## Creating a project
+## 🔗 Live Demo
+[Check out the live site here!](https://fairuzsakhiy.my.id)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 📜 Features
+- Overview of my skills and expertise
+- Project showcase with descriptions and live/demo links
+- Contact form to reach me directly
+- Responsive design for optimal viewing on any device
 
-```bash
-# create a new project in the current directory
-npx sv create
+## 🛠️ Built With
+- **Svelte** - Frontend framework for a fast and reactive user experience
+- **TypeScript** - Strongly typed language for building scalable applications
+- **Strapi** - Headless CMS used for managing backend content (in a separate repository)
 
-# create a new project in my-app
-npx sv create my-app
-```
+## 🚀 Getting Started
 
-## Developing
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/portfolio.git
+    cd portfolio
+    ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
+3. **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+   Visit [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+> **Note**: This project uses a [Strapi backend](https://github.com/fsakhiy/ruzz-cms) to manage content. Please refer to the backend repository for setup instructions.
 
-## Building
+## 📂 Project Structure
+- `/src`: Main source code, including Svelte components and routes
+- `/public`: Static assets like images and icons
 
-To create a production version of your app:
+## 🤝 Contributing
+If you have suggestions for improvements, feel free to fork the repo, submit issues, or make pull requests!
 
-```bash
-npm run build
-```
+## 📧 Contact
+Reach out via email at [me@fairuzsakhiy.my.id](mailto:me@fairuzsakhiy.my.id).
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## 📝 License
+This project is licensed under the MIT License.
