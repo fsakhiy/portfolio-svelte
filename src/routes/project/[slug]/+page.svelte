@@ -24,7 +24,7 @@
   </div>
   <div class="flex flex-col gap-5">
     <h2 class="text-xl font-bold">Technology Used</h2>
-    <div class="flex flex-row gap-4 flex-wrap">
+    <div class="flex flex-row gap-4 flex-wrap items-center justify-center md:items-start md:justify-start">
       {#each tech_stacks as ts}
         <TechStack name={ts.attributes.name} imgUrl={ts.attributes.picture.data.attributes.url} />
       {/each}
