@@ -5,7 +5,7 @@
   export let imgUrl: any[];
 </script>
 
-<div class="p-12 items-center justify-center flex">
+<div class="px-12 flex">
   <Carousel.Root class="w-full max-w-2xl">
     <Carousel.Content>
         {#each imgUrl as image}
